@@ -1,0 +1,44 @@
+/* index.css or your main CSS file */
+
+/* Ensure body has no default margin and width */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+background-color: #3e62f0;
+}
+
+/* General styles for html and body */
+html, body {
+  height: 100%;
+  width: 100%; /* Ensure full width */
+}
+
+/* Ensures the root div takes full height and width */
+#root {
+  height: 100%;
+  width: 100%; /* Prevent overflow */
+}
+
+/* Responsive adjustments for containers */
+.card-container {
+  width: 100%; /* Ensures full width */
+  padding: 0 15px; /* Add padding for small screens */
+  box-sizing: border-box; /* Ensures padding doesn't cause overflow */
+}
+
+.p-card {
+  width: 100%; /* Ensures card takes full width */
+  box-sizing: border-box; /* Ensures padding doesn't cause overflow */
+}
+
+/* Styling the entire TabView */
+
+
+
+@media (max-width: 600px) {
+  /* Adjustments for smaller screens */
+  .p-card {
+    padding: 1rem; /* Add padding to avoid content touching edges */
+  }
+}
