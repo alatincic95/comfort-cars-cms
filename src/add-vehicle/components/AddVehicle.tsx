@@ -11,30 +11,40 @@ import { Mileage } from "./Mileage";
 import { EnginePower } from "./EnginePower";
 import { ChassisNumber } from "./ChassisNumber";
 import { VehicleDescription } from "./VehicleDescription";
+import { Title } from "./Title";
+import { Brand } from "./Brand";
+import { Model } from "./Model";
+import { Volume } from "./Volume";
 
 const AddVehicle: React.FC = () => {
   const { imagePreviewUrls, setImagePreviewUrls } = useAddVehicle();
+  const { handleSubmit } = useAddVehicle();
 
   return (
     <Formik
       initialValues={{
         images: [],
         price: "",
-        year: "",
+        yearOfMake: "",
         mileage: "",
-        engineType: "",
-        transmission: "",
+        engineType: "Benzinski",
+        transmission: "Transmisijski",
         enginePower: "",
         chassisNumber: "",
         description: "",
       }}
       validationSchema={addVehicleValidationSchema} // Use the extracted validation schema
       onSubmit={(values) => {
-        console.log("Form data:", values);
+        console.log(values);
+        handleSubmit(values);
       }}
     >
       {() => (
         <Form className="p-fluid text-white">
+          <Title />
+          <Brand />
+          <Model />
+          <Volume />
           <AddVehicleImages
             imagePreviewUrls={imagePreviewUrls}
             setImagePreviewUrls={setImagePreviewUrls}

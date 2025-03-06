@@ -8,7 +8,7 @@ export const ManufacturingYear = () => {
       <Field
         as="select"
         id="year"
-        name="year"
+        name="yearOfMake"
         className="p-inputtext p-component my-2"
         placeholder="Odaberite godinu"
       >

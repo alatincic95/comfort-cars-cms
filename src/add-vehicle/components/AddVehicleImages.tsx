@@ -9,6 +9,18 @@ export const AddVehicleImages = ({
   imagePreviewUrls: string[];
 }) => {
   const { setFieldValue } = useFormikContext();
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.currentTarget.files;
+    if (files) {
+      const fileArray = Array.from(files);
+      const imageUrls = fileArray.map((file) => URL.createObjectURL(file)); // Create URLs for preview
+
+      setImagePreviewUrls(imageUrls); // Update state with preview URLs
+      setFieldValue("images", fileArray); // Store the files in Formik state
+    }
+  };
+
   return (
     <div className="p-field m-2">
       <label htmlFor="images">Dodaj fotografije automobila</label>
@@ -18,18 +30,7 @@ export const AddVehicleImages = ({
         type="file"
         multiple // Allow multiple files
         accept="image/*"
-        onChange={(event) => {
-          const files = event.currentTarget.files;
-          if (files) {
-            const fileArray = Array.from(files);
-            const imageUrls = fileArray.map((file) =>
-              URL.createObjectURL(file)
-            ); // Create URLs for preview
-
-            setImagePreviewUrls(imageUrls); // Update state with preview URLs
-            setFieldValue("images", fileArray); // Store the files in Formik state
-          }
-        }}
+        onChange={handleFileChange}
         className="p-inputtext p-component my-2"
       />
       <div
